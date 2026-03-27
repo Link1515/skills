@@ -18,27 +18,22 @@ Use for feature changes, bug fixes, and refactors in this repository.
 - Follow existing project patterns before introducing new abstractions
 
 # Rules
-1. Read neighboring files and existing tests before editing.
-2. Reuse existing abstractions and utilities when possible.
-3. Do not introduce new dependencies unless necessary.
-4. Prefer explicit names and straightforward control flow.
-5. Keep functions focused and small.
-6. Add or update tests for happy path, edge cases, and failure cases.
-7. Run lint, typecheck, and relevant tests after changes.
-8. Summarize architectural impact in the final output.
+1. Reuse existing abstractions and utilities when possible.
+2. Do not introduce new dependencies unless necessary.
+3. Prefer explicit names and straightforward control flow.
+4. Keep functions focused and small.
+5. Summarize architectural impact in the final output.
 
 # Output format
 - What changed
 - Why this approach
 - Files touched
-- Tests added/updated
 - Verification results
 - Risks / follow-ups
 
 # Verification checklist
 - Lint passes
 - Typecheck passes
-- Relevant tests pass
 - No unrelated files changed
 
 # Gotchas
