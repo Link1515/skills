@@ -6,9 +6,11 @@ description: 根據目前程式碼修改內容，自動生成 Pull Request 訊�
 # Write PR Message
 
 ## 目的
-在完成程式碼修改後，根據 git diff、變更檔案、commit context 與專案內容，自動產出一份結構清楚、可直接貼到 GitHub / GitLab 的 PR 訊息。
+
+在完成程式碼修改後，根據目前會話、變更檔案與專案內容，自動產出一份結構清楚、可直接貼到 GitHub / GitLab 的 PR 訊息。
 
 ## 何時使用
+
 當使用者表達以下意圖時使用：
 
 - 幫我寫 PR 訊息
@@ -18,33 +20,16 @@ description: 根據目前程式碼修改內容，自動生成 Pull Request 訊�
 - 產出 PR title / PR body
 
 ## 你要做的事
+
 你必須檢查目前工作區的修改，並依據實際變更撰寫 PR 訊息，而不是憑空猜測。
 
 ### Step 1: 蒐集變更資訊
-優先使用 git 指令查看修改內容：
 
-1. 取得目前 branch 名稱
-   - `git branch --show-current`
-
-2. 檢查工作區狀態
-   - `git status --short`
-
-3. 取得變更檔案列表
-   - `git diff --name-only`
-   - 若 staged 內容存在，也看：
-     - `git diff --cached --name-only`
-
-4. 取得實際 diff
-   - `git diff --stat`
-   - `git diff --cached --stat`
-   - `git diff`
-   - `git diff --cached`
-
-5. 若需要更多脈絡，可查看最近 commits
-   - `git log --oneline -5`
+優先查看當前會話做的任務，如果需要額外資訊可以用 git diff --cached 查看變更內容
 
 ### Step 2: 理解變更目的
-根據 diff 判斷這次修改屬於哪一類：
+
+根據會話做的任務判斷這次修改屬於哪一類：
 
 - feature
 - fix
@@ -59,6 +44,7 @@ description: 根據目前程式碼修改內容，自動生成 Pull Request 訊�
 如果同時包含多種類型，抓主要目的作為 PR 標題類型。
 
 ### Step 3: 產出 PR Title
+
 PR title 應該：
 
 - 簡潔
@@ -77,16 +63,20 @@ PR title 應該：
 如果專案明顯不使用 conventional style，則改用自然語意標題，但仍要簡潔。
 
 ### Step 4: 產出 PR Body
+
 PR body 預設使用以下格式，並以繁體中文撰寫：
 
 ## Summary
+
 簡要說明這次修改的背景與目的，2~4 句即可。
 
 ## Changes
+
 條列列出實際修改內容。
 每點都要具體，避免只寫「優化程式碼」這種空話。
 
 ## Impact
+
 說明影響範圍，例如：
 
 - 哪些模組受到影響
@@ -94,6 +84,7 @@ PR body 預設使用以下格式，並以繁體中文撰寫：
 - 是否有相容性注意事項
 
 ## Testing
+
 列出已執行或建議的驗證方式，例如：
 
 - 單元測試
@@ -102,6 +93,7 @@ PR body 預設使用以下格式，並以繁體中文撰寫：
 - 若未執行測試，要誠實註明
 
 ## Risks / Notes
+
 補充 reviewer 需要特別注意的地方，例如：
 
 - migration
@@ -110,24 +102,31 @@ PR body 預設使用以下格式，並以繁體中文撰寫：
 - 仍待後續處理的項目
 
 ### PR body 範本
+
 輸出時應盡量接近以下格式：
 
 ```md
 ## Summary
+
 ...
 
 ## Changes
+
 - ...
 - ...
 - ...
 
 ## Impact
+
 - ...
 - ...
 
 ## Testing
+
 - ...
 - ...
 
 ## Risks / Notes
+
 - ...
+```
