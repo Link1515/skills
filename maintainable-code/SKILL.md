@@ -1,6 +1,6 @@
 ---
 name: maintainable-code
-description: Use when modifying application code in this repo. Produces minimal, reviewable diffs that follow repo conventions, preserve architecture boundaries, extract reusable modules when appropriate, and generate secure code that applies secure-by-default practices, input validation, least privilege, and avoids common security weaknesses.
+description: Use when modifying application code in this repo. Prioritizes correctly working functionality, then maintainable, reviewable changes that follow repo conventions, preserve architecture boundaries, extract reusable modules when appropriate, and generate secure code that applies secure-by-default practices, input validation, least privilege, and avoids common security weaknesses.
 ---
 
 # When to use
@@ -12,8 +12,9 @@ Use for feature changes, bug fixes, and refactors in this repository.
 - Experimental prototypes
 
 # Goals
+- Ensure the requested functionality works correctly before optimizing for implementation size or scope
 - Prefer clear, maintainable code over clever code
-- Keep diffs minimal and scoped
+- Make the complete set of changes needed for a robust, maintainable solution
 - Preserve public APIs unless the task requires changes
 - Follow existing project patterns before introducing new abstractions
 - Extract reusable, focused modules when doing so improves readability, testability, or reuse
@@ -45,7 +46,7 @@ When modifying application code:
 2. Identify the existing architectural pattern and ownership boundaries.
 3. Decide whether the change belongs in an existing module, a new focused module, or the current file.
 4. If adding more than a small amount of logic to one file, first consider extraction into a reusable function, class, service, component, hook, validator, mapper, adapter, repository, or domain module.
-5. Implement the smallest scoped change that follows the chosen boundary.
+5. Implement a correct, maintainable solution that follows the chosen boundary; do not limit necessary changes merely to keep the diff small.
 6. Add or update tests at the extracted module boundary when possible.
 7. In the final response, mention any extraction decision: what was extracted, what stayed inline, and why.
 
@@ -88,7 +89,7 @@ Do not extract when:
 - The extracted function or module would have an unclear name.
 - Extraction would require excessive parameter threading or make the call site harder to read.
 - The repository convention intentionally colocates this kind of logic.
-- The refactor would touch unrelated files or make the diff harder to review.
+- The refactor would not improve the requested behavior or the maintainability of the affected code.
 - The abstraction is speculative and not grounded in current requirements.
 
 # Output format
